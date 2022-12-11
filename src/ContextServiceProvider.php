@@ -187,10 +187,8 @@ class ContextServiceProvider extends ServiceProvider
         if (Context::$registersRoutes) {
             Route::group([
                 'namespace' => 'ERPSAAS\Context\Http\Controllers',
-                'domain' => config('filament.domain'),
-                'middleware' => config('filament.middleware.base', 'web'),
-                'name' => ('filament.'),
-                'prefix' => config('filament.path'),
+                'domain' => config('context.domain', null),
+                'prefix' => config('context.prefix', config('context.path')),
             ], function () {
                 $this->loadRoutesFrom(__DIR__.'/../routes/'.config('context.stack').'.php');
             });
