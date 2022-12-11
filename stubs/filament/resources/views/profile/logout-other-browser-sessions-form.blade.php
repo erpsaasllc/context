@@ -1,4 +1,4 @@
-<x-context::action-section>
+<x-context-action-section>
     <x-slot name="title">
         {{ __('Browser Sessions') }}
     </x-slot>
@@ -52,17 +52,17 @@
         @endif
 
         <div class="flex items-center mt-5">
-            <x-context::button wire:click="confirmLogout" wire:loading.attr="disabled">
+            <x-context-button wire:click="confirmLogout" wire:loading.attr="disabled">
                 {{ __('Log Out Other Browser Sessions') }}
-            </x-context::button>
+            </x-context-button>
 
-            <x-context::action-message class="ml-3" on="loggedOut">
+            <x-context-action-message class="ml-3" on="loggedOut">
                 {{ __('Done.') }}
-            </x-context::action-message>
+            </x-context-action-message>
         </div>
 
         <!-- Log Out Other Devices Confirmation Modal -->
-        <x-context::dialog-modal wire:model="confirmingLogout">
+        <x-context-dialog-modal wire:model="confirmingLogout">
             <x-slot name="title">
                 {{ __('Log Out Other Browser Sessions') }}
             </x-slot>
@@ -71,27 +71,27 @@
                 {{ __('Please enter your password to confirm you would like to log out of your other browser sessions across all of your devices.') }}
 
                 <div class="mt-4" x-data="{}" x-on:confirming-logout-other-browser-sessions.window="setTimeout(() => $refs.password.focus(), 250)">
-                    <x-context::input type="password" class="mt-1 block w-3/4"
+                    <x-context-input type="password" class="mt-1 block w-3/4"
                                 placeholder="{{ __('Password') }}"
                                 x-ref="password"
                                 wire:model.defer="password"
                                 wire:keydown.enter="logoutOtherBrowserSessions" />
 
-                    <x-context::input-error for="password" class="mt-2" />
+                    <x-context-input-error for="password" class="mt-2" />
                 </div>
             </x-slot>
 
             <x-slot name="footer">
-                <x-context::secondary-button wire:click="$toggle('confirmingLogout')" wire:loading.attr="disabled">
+                <x-context-secondary-button wire:click="$toggle('confirmingLogout')" wire:loading.attr="disabled">
                     {{ __('Cancel') }}
-                </x-context::secondary-button>
+                </x-context-secondary-button>
 
-                <x-context::button class="ml-3"
+                <x-context-button class="ml-3"
                             wire:click="logoutOtherBrowserSessions"
                             wire:loading.attr="disabled">
                     {{ __('Log Out Other Browser Sessions') }}
-                </x-context::button>
+                </x-context-button>
             </x-slot>
-        </x-context::dialog-modal>
+        </x-context-dialog-modal>
     </x-slot>
-</x-context::action-section>
+</x-context-action-section>

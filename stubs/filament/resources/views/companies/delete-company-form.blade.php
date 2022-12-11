@@ -1,4 +1,4 @@
-<x-context::action-section>
+<x-context-action-section>
     <x-slot name="title">
         {{ __('Delete Company') }}
     </x-slot>
@@ -13,13 +13,13 @@
         </div>
 
         <div class="mt-5">
-            <x-context::danger-button wire:click="$toggle('confirmingCompanyDeletion')" wire:loading.attr="disabled">
+            <x-context-danger-button wire:click="$toggle('confirmingCompanyDeletion')" wire:loading.attr="disabled">
                 {{ __('Delete Company') }}
-            </x-context::danger-button>
+            </x-context-danger-button>
         </div>
 
         <!-- Delete Company Confirmation Modal -->
-        <x-context::confirmation-modal wire:model="confirmingCompanyDeletion">
+        <x-context-confirmation-modal wire:model="confirmingCompanyDeletion">
             <x-slot name="title">
                 {{ __('Delete Company') }}
             </x-slot>
@@ -29,14 +29,14 @@
             </x-slot>
 
             <x-slot name="footer">
-                <x-context::secondary-button wire:click="$toggle('confirmingCompanyDeletion')" wire:loading.attr="disabled">
+                <x-context-secondary-button wire:click="$toggle('confirmingCompanyDeletion')" wire:loading.attr="disabled">
                     {{ __('Cancel') }}
-                </x-context::secondary-button>
+                </x-context-secondary-button>
 
-                <x-context::danger-button class="ml-3" wire:click="deleteCompany" wire:loading.attr="disabled">
+                <x-context-danger-button class="ml-3" wire:click="deleteCompany" wire:loading.attr="disabled">
                     {{ __('Delete Company') }}
-                </x-context::danger-button>
+                </x-context-danger-button>
             </x-slot>
-        </x-context::confirmation-modal>
+        </x-context-confirmation-modal>
     </x-slot>
-</x-context::action-section>
+</x-context-action-section>

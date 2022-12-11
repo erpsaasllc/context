@@ -10,7 +10,7 @@
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                 @livewire('profile.update-profile-information-form')
 
-                <x-context::section-border />
+                <x-context-section-border />
             @endif
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
@@ -18,7 +18,7 @@
                     @livewire('profile.update-password-form')
                 </div>
 
-                <x-context::section-border />
+                <x-context-section-border />
             @endif
 
             @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
@@ -26,7 +26,7 @@
                     @livewire('profile.two-factor-authentication-form')
                 </div>
 
-                <x-context::section-border />
+                <x-context-section-border />
             @endif
 
             <div class="mt-10 sm:mt-0">
@@ -34,7 +34,7 @@
             </div>
 
             @if (ERPSAAS\Context\Context::hasAccountDeletionFeatures())
-                <x-context::section-border />
+                <x-context-section-border />
 
                 <div class="mt-10 sm:mt-0">
                     @livewire('profile.delete-user-form')

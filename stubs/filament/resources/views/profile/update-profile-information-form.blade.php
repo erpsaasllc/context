@@ -1,4 +1,4 @@
-<x-context::form-section submit="updateProfileInformation">
+<x-context-form-section submit="updateProfileInformation">
     <x-slot name="title">
         {{ __('Profile Information') }}
     </x-slot>
@@ -24,7 +24,7 @@
                                     reader.readAsDataURL($refs.photo.files[0]);
                             " />
 
-                <x-context::label for="photo" value="{{ __('Photo') }}" />
+                <x-context-label for="photo" value="{{ __('Photo') }}" />
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
@@ -38,32 +38,32 @@
                     </span>
                 </div>
 
-                <x-context::secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
+                <x-context-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
                     {{ __('Select A New Photo') }}
-                </x-context::secondary-button>
+                </x-context-secondary-button>
 
                 @if ($this->user->profile_photo_path)
-                    <x-context::secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
+                    <x-context-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
                         {{ __('Remove Photo') }}
-                    </x-context::secondary-button>
+                    </x-context-secondary-button>
                 @endif
 
-                <x-context::input-error for="photo" class="mt-2" />
+                <x-context-input-error for="photo" class="mt-2" />
             </div>
         @endif
 
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
-            <x-context::label for="name" value="{{ __('Name') }}" />
-            <x-context::input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
-            <x-context::input-error for="name" class="mt-2" />
+            <x-context-label for="name" value="{{ __('Name') }}" />
+            <x-context-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
+            <x-context-input-error for="name" class="mt-2" />
         </div>
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
-            <x-context::label for="email" value="{{ __('Email') }}" />
-            <x-context::input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
-            <x-context::input-error for="email" class="mt-2" />
+            <x-context-label for="email" value="{{ __('Email') }}" />
+            <x-context-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
+            <x-context-input-error for="email" class="mt-2" />
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
                 <p class="text-sm mt-2">
@@ -84,12 +84,12 @@
     </x-slot>
 
     <x-slot name="actions">
-        <x-context::action-message class="mr-3" on="saved">
+        <x-context-action-message class="mr-3" on="saved">
             {{ __('Saved.') }}
-        </x-context::action-message>
+        </x-context-action-message>
 
-        <x-context::button wire:loading.attr="disabled" wire:target="photo">
+        <x-context-button wire:loading.attr="disabled" wire:target="photo">
             {{ __('Save') }}
-        </x-context::button>
+        </x-context-button>
     </x-slot>
-</x-context::form-section>
+</x-context-form-section>

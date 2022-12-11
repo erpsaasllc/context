@@ -15,7 +15,7 @@
 </span>
 
 @once
-<x-context::dialog-modal wire:model="confirmingPassword">
+<x-context-dialog-modal wire:model="confirmingPassword">
     <x-slot name="title">
         {{ $title }}
     </x-slot>
@@ -24,23 +24,23 @@
         {{ $content }}
 
         <div class="mt-4" x-data="{}" x-on:confirming-password.window="setTimeout(() => $refs.confirmable_password.focus(), 250)">
-            <x-context::input type="password" class="mt-1 block w-3/4" placeholder="{{ __('Password') }}"
+            <x-context-input type="password" class="mt-1 block w-3/4" placeholder="{{ __('Password') }}"
                         x-ref="confirmable_password"
                         wire:model.defer="confirmablePassword"
                         wire:keydown.enter="confirmPassword" />
 
-            <x-context::input-error for="confirmable_password" class="mt-2" />
+            <x-context-input-error for="confirmable_password" class="mt-2" />
         </div>
     </x-slot>
 
     <x-slot name="footer">
-        <x-context::secondary-button wire:click="stopConfirmingPassword" wire:loading.attr="disabled">
+        <x-context-secondary-button wire:click="stopConfirmingPassword" wire:loading.attr="disabled">
             {{ __('Cancel') }}
-        </x-context::secondary-button>
+        </x-context-secondary-button>
 
-        <x-context::button class="ml-3" dusk="confirm-password-button" wire:click="confirmPassword" wire:loading.attr="disabled">
+        <x-context-button class="ml-3" dusk="confirm-password-button" wire:click="confirmPassword" wire:loading.attr="disabled">
             {{ $button }}
-        </x-context::button>
+        </x-context-button>
     </x-slot>
-</x-context::dialog-modal>
+</x-context-dialog-modal>
 @endonce

@@ -1,10 +1,10 @@
 <div>
     @if (Gate::check('addCompanyEmployee', $company))
-        <x-context::section-border />
+        <x-context-section-border />
 
         <!-- Add Company Employee -->
         <div class="mt-10 sm:mt-0">
-            <x-context::form-section submit="addCompanyEmployee">
+            <x-context-form-section submit="addCompanyEmployee">
                 <x-slot name="title">
                     {{ __('Add Company Employee') }}
                 </x-slot>
@@ -22,16 +22,16 @@
 
                     <!-- Employee Email -->
                     <div class="col-span-6 sm:col-span-4">
-                        <x-context::label for="email" value="{{ __('Email') }}" />
-                        <x-context::input id="email" type="email" class="mt-1 block w-full" wire:model.defer="addCompanyEmployeeForm.email" />
-                        <x-context::input-error for="email" class="mt-2" />
+                        <x-context-label for="email" value="{{ __('Email') }}" />
+                        <x-context-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="addCompanyEmployeeForm.email" />
+                        <x-context-input-error for="email" class="mt-2" />
                     </div>
 
                     <!-- Role -->
                     @if (count($this->roles) > 0)
                         <div class="col-span-6 lg:col-span-4">
-                            <x-context::label for="role" value="{{ __('Role') }}" />
-                            <x-context::input-error for="role" class="mt-2" />
+                            <x-context-label for="role" value="{{ __('Role') }}" />
+                            <x-context-input-error for="role" class="mt-2" />
 
                             <div class="relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer">
                                 @foreach ($this->roles as $index => $role)
@@ -62,24 +62,24 @@
                 </x-slot>
 
                 <x-slot name="actions">
-                    <x-context::action-message class="mr-3" on="saved">
+                    <x-context-action-message class="mr-3" on="saved">
                         {{ __('Added.') }}
-                    </x-context::action-message>
+                    </x-context-action-message>
 
-                    <x-context::button>
+                    <x-context-button>
                         {{ __('Add') }}
-                    </x-context::button>
+                    </x-context-button>
                 </x-slot>
-            </x-context::form-section>
+            </x-context-form-section>
         </div>
     @endif
 
     @if ($company->companyInvitations->isNotEmpty() && Gate::check('addCompanyEmployee', $company))
-        <x-context::section-border />
+        <x-context-section-border />
 
         <!-- Company Employee Invitations -->
         <div class="mt-10 sm:mt-0">
-            <x-context::action-section>
+            <x-context-action-section>
                 <x-slot name="title">
                     {{ __('Pending Company Invitations') }}
                 </x-slot>
@@ -107,16 +107,16 @@
                         @endforeach
                     </div>
                 </x-slot>
-            </x-context::action-section>
+            </x-context-action-section>
         </div>
     @endif
 
     @if ($company->users->isNotEmpty())
-        <x-context::section-border />
+        <x-context-section-border />
 
         <!-- Manage Company Employees -->
         <div class="mt-10 sm:mt-0">
-            <x-context::action-section>
+            <x-context-action-section>
                 <x-slot name="title">
                     {{ __('Company Employees') }}
                 </x-slot>
@@ -164,12 +164,12 @@
                         @endforeach
                     </div>
                 </x-slot>
-            </x-context::action-section>
+            </x-context-action-section>
         </div>
     @endif
 
     <!-- Role Management Modal -->
-    <x-context::dialog-modal wire:model="currentlyManagingRole">
+    <x-context-dialog-modal wire:model="currentlyManagingRole">
         <x-slot name="title">
             {{ __('Manage Role') }}
         </x-slot>
@@ -202,18 +202,18 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-context::secondary-button wire:click="stopManagingRole" wire:loading.attr="disabled">
+            <x-context-secondary-button wire:click="stopManagingRole" wire:loading.attr="disabled">
                 {{ __('Cancel') }}
-            </x-context::secondary-button>
+            </x-context-secondary-button>
 
-            <x-context::button class="ml-3" wire:click="updateRole" wire:loading.attr="disabled">
+            <x-context-button class="ml-3" wire:click="updateRole" wire:loading.attr="disabled">
                 {{ __('Save') }}
-            </x-context::button>
+            </x-context-button>
         </x-slot>
-    </x-context::dialog-modal>
+    </x-context-dialog-modal>
 
     <!-- Leave Company Confirmation Modal -->
-    <x-context::confirmation-modal wire:model="confirmingLeavingCompany">
+    <x-context-confirmation-modal wire:model="confirmingLeavingCompany">
         <x-slot name="title">
             {{ __('Leave Company') }}
         </x-slot>
@@ -223,18 +223,18 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-context::secondary-button wire:click="$toggle('confirmingLeavingCompany')" wire:loading.attr="disabled">
+            <x-context-secondary-button wire:click="$toggle('confirmingLeavingCompany')" wire:loading.attr="disabled">
                 {{ __('Cancel') }}
-            </x-context::secondary-button>
+            </x-context-secondary-button>
 
-            <x-context::danger-button class="ml-3" wire:click="leaveCompany" wire:loading.attr="disabled">
+            <x-context-danger-button class="ml-3" wire:click="leaveCompany" wire:loading.attr="disabled">
                 {{ __('Leave') }}
-            </x-context::danger-button>
+            </x-context-danger-button>
         </x-slot>
-    </x-context::confirmation-modal>
+    </x-context-confirmation-modal>
 
     <!-- Remove Company Employee Confirmation Modal -->
-    <x-context::confirmation-modal wire:model="confirmingCompanyEmployeeRemoval">
+    <x-context-confirmation-modal wire:model="confirmingCompanyEmployeeRemoval">
         <x-slot name="title">
             {{ __('Remove Company Employee') }}
         </x-slot>
@@ -244,13 +244,13 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-context::secondary-button wire:click="$toggle('confirmingCompanyEmployeeRemoval')" wire:loading.attr="disabled">
+            <x-context-secondary-button wire:click="$toggle('confirmingCompanyEmployeeRemoval')" wire:loading.attr="disabled">
                 {{ __('Cancel') }}
-            </x-context::secondary-button>
+            </x-context-secondary-button>
 
-            <x-context::danger-button class="ml-3" wire:click="removeCompanyEmployee" wire:loading.attr="disabled">
+            <x-context-danger-button class="ml-3" wire:click="removeCompanyEmployee" wire:loading.attr="disabled">
                 {{ __('Remove') }}
-            </x-context::danger-button>
+            </x-context-danger-button>
         </x-slot>
-    </x-context::confirmation-modal>
+    </x-context-confirmation-modal>
 </div>

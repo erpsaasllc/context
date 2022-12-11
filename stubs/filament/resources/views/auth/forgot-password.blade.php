@@ -1,7 +1,7 @@
 <x-guest-layout>
-    <x-context::authentication-card>
+    <x-context-authentication-card>
         <x-slot name="logo">
-            <x-context::authentication-card-logo />
+            <x-context-authentication-card-logo />
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
@@ -14,21 +14,21 @@
             </div>
         @endif
 
-        <x-context::validation-errors class="mb-4" />
+        <x-context-validation-errors class="mb-4" />
 
         <form method="POST" action="{{ route('password.email') }}">
             @csrf
 
             <div class="block">
-                <x-context::label for="email" value="{{ __('Email') }}" />
-                <x-context::input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-context-label for="email" value="{{ __('Email') }}" />
+                <x-context-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-context::button>
+                <x-context-button>
                     {{ __('Email Password Reset Link') }}
-                </x-context::button>
+                </x-context-button>
             </div>
         </form>
-    </x-context::authentication-card>
+    </x-context-authentication-card>
 </x-guest-layout>

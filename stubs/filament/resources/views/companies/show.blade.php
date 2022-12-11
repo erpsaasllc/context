@@ -12,7 +12,7 @@
             @livewire('companies.company-employee-manager', ['company' => $company])
 
             @if (Gate::check('delete', $company) && ! $company->personal_company)
-                <x-context::section-border />
+                <x-context-section-border />
 
                 <div class="mt-10 sm:mt-0">
                     @livewire('companies.delete-company-form', ['company' => $company])

@@ -1,7 +1,7 @@
 <x-guest-layout>
-    <x-context::authentication-card>
+    <x-context-authentication-card>
         <x-slot name="logo">
-            <x-context::authentication-card-logo />
+            <x-context-authentication-card-logo />
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
@@ -19,9 +19,9 @@
                 @csrf
 
                 <div>
-                    <x-context::button type="submit">
+                    <x-context-button type="submit">
                         {{ __('Resend Verification Email') }}
-                    </x-context::button>
+                    </x-context-button>
                 </div>
             </form>
 
@@ -41,5 +41,5 @@
                 </form>
             </div>
         </div>
-    </x-context::authentication-card>
+    </x-context-authentication-card>
 </x-guest-layout>

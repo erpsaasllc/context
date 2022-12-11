@@ -140,7 +140,7 @@ class ContextServiceProvider extends ServiceProvider
      */
     protected function registerComponent(string $component)
     {
-        Blade::component('context::components.'.$component, 'context::'.$component);
+        Blade::component('context::components.'.$component, 'context-'.$component);
     }
 
     /**

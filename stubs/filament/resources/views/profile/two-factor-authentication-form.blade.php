@@ -1,4 +1,4 @@
-<x-context::action-section>
+<x-context-action-section>
     <x-slot name="title">
         {{ __('Two Factor Authentication') }}
     </x-slot>
@@ -50,13 +50,13 @@
 
                 @if ($showingConfirmation)
                     <div class="mt-4">
-                        <x-context::label for="code" value="{{ __('Code') }}" />
+                        <x-context-label for="code" value="{{ __('Code') }}" />
 
-                        <x-context::input id="code" type="text" name="code" class="block mt-1 w-1/2" inputmode="numeric" autofocus autocomplete="one-time-code"
+                        <x-context-input id="code" type="text" name="code" class="block mt-1 w-1/2" inputmode="numeric" autofocus autocomplete="one-time-code"
                             wire:model.defer="code"
                             wire:keydown.enter="confirmTwoFactorAuthentication" />
 
-                        <x-context::input-error for="code" class="mt-2" />
+                        <x-context-input-error for="code" class="mt-2" />
                     </div>
                 @endif
             @endif
@@ -78,47 +78,47 @@
 
         <div class="mt-5">
             @if (! $this->enabled)
-                <x-context::confirms-password wire:then="enableTwoFactorAuthentication">
-                    <x-context::button type="button" wire:loading.attr="disabled">
+                <x-context-confirms-password wire:then="enableTwoFactorAuthentication">
+                    <x-context-button type="button" wire:loading.attr="disabled">
                         {{ __('Enable') }}
-                    </x-context::button>
-                </x-context::confirms-password>
+                    </x-context-button>
+                </x-context-confirms-password>
             @else
                 @if ($showingRecoveryCodes)
-                    <x-context::confirms-password wire:then="regenerateRecoveryCodes">
-                        <x-context::secondary-button class="mr-3">
+                    <x-context-confirms-password wire:then="regenerateRecoveryCodes">
+                        <x-context-secondary-button class="mr-3">
                             {{ __('Regenerate Recovery Codes') }}
-                        </x-context::secondary-button>
-                    </x-context::confirms-password>
+                        </x-context-secondary-button>
+                    </x-context-confirms-password>
                 @elseif ($showingConfirmation)
-                    <x-context::confirms-password wire:then="confirmTwoFactorAuthentication">
-                        <x-context::button type="button" class="mr-3" wire:loading.attr="disabled">
+                    <x-context-confirms-password wire:then="confirmTwoFactorAuthentication">
+                        <x-context-button type="button" class="mr-3" wire:loading.attr="disabled">
                             {{ __('Confirm') }}
-                        </x-context::button>
-                    </x-context::confirms-password>
+                        </x-context-button>
+                    </x-context-confirms-password>
                 @else
-                    <x-context::confirms-password wire:then="showRecoveryCodes">
-                        <x-context::secondary-button class="mr-3">
+                    <x-context-confirms-password wire:then="showRecoveryCodes">
+                        <x-context-secondary-button class="mr-3">
                             {{ __('Show Recovery Codes') }}
-                        </x-context::secondary-button>
-                    </x-context::confirms-password>
+                        </x-context-secondary-button>
+                    </x-context-confirms-password>
                 @endif
 
                 @if ($showingConfirmation)
-                    <x-context::confirms-password wire:then="disableTwoFactorAuthentication">
-                        <x-context::secondary-button wire:loading.attr="disabled">
+                    <x-context-confirms-password wire:then="disableTwoFactorAuthentication">
+                        <x-context-secondary-button wire:loading.attr="disabled">
                             {{ __('Cancel') }}
-                        </x-context::secondary-button>
-                    </x-context::confirms-password>
+                        </x-context-secondary-button>
+                    </x-context-confirms-password>
                 @else
-                    <x-context::confirms-password wire:then="disableTwoFactorAuthentication">
-                        <x-context::danger-button wire:loading.attr="disabled">
+                    <x-context-confirms-password wire:then="disableTwoFactorAuthentication">
+                        <x-context-danger-button wire:loading.attr="disabled">
                             {{ __('Disable') }}
-                        </x-context::danger-button>
-                    </x-context::confirms-password>
+                        </x-context-danger-button>
+                    </x-context-confirms-password>
                 @endif
 
             @endif
         </div>
     </x-slot>
-</x-context::action-section>
+</x-context-action-section>

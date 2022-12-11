@@ -6,15 +6,15 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('admin') }}">
-                        <x-context::application-mark class="block h-9 w-auto" />
+                        <x-context-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-context::nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
+                    <x-context-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
                         {{ __('Dashboard') }}
-                    </x-context::nav-link>
+                    </x-context-nav-link>
                 </div>
             </div>
 
@@ -22,7 +22,7 @@
                 <!-- Companies Dropdown -->
                 @if (ERPSAAS\Context\Context::hasCompanyFeatures())
                     <div class="ml-3 relative">
-                        <x-context::dropdown align="right" width="60">
+                        <x-context-dropdown align="right" width="60">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
@@ -43,14 +43,14 @@
                                     </div>
 
                                     <!-- Company Settings -->
-                                    <x-context::dropdown-link href="{{ route('companies.show', Auth::user()->currentCompany->id) }}">
+                                    <x-context-dropdown-link href="{{ route('companies.show', Auth::user()->currentCompany->id) }}">
                                         {{ __('Company Settings') }}
-                                    </x-context::dropdown-link>
+                                    </x-context-dropdown-link>
 
                                     @can('create', ERPSAAS\Context\Context::newCompanyModel())
-                                        <x-context::dropdown-link href="{{ route('companies.create') }}">
+                                        <x-context-dropdown-link href="{{ route('companies.create') }}">
                                             {{ __('Create New Company') }}
-                                        </x-context::dropdown-link>
+                                        </x-context-dropdown-link>
                                     @endcan
 
                                     <div class="border-t border-gray-100"></div>
@@ -61,17 +61,17 @@
                                     </div>
 
                                     @foreach (Auth::user()->allCompanies() as $company)
-                                        <x-context::switchable-company :company="$company" />
+                                        <x-context-switchable-company :company="$company" />
                                     @endforeach
                                 </div>
                             </x-slot>
-                        </x-context::dropdown>
+                        </x-context-dropdown>
                     </div>
                 @endif
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
-                    <x-context::dropdown align="right" width="48">
+                    <x-context-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (ERPSAAS\Context\Context::managesProfilePhotos())
                                 <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
@@ -96,14 +96,14 @@
                                 {{ __('Manage Account') }}
                             </div>
 
-                            <x-context::dropdown-link href="{{ route('profile.show') }}">
+                            <x-context-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
-                            </x-context::dropdown-link>
+                            </x-context-dropdown-link>
 
                             @if (ERPSAAS\Context\Context::hasApiFeatures())
-                                <x-context::dropdown-link href="{{ route('api-tokens.index') }}">
+                                <x-context-dropdown-link href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}
-                                </x-context::dropdown-link>
+                                </x-context-dropdown-link>
                             @endif
 
                             <div class="border-t border-gray-100"></div>
@@ -112,13 +112,13 @@
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
 
-                                <x-context::dropdown-link href="{{ route('logout') }}"
+                                <x-context-dropdown-link href="{{ route('logout') }}"
                                          @click.prevent="$root.submit();">
                                     {{ __('Log Out') }}
-                                </x-context::dropdown-link>
+                                </x-context-dropdown-link>
                             </form>
                         </x-slot>
-                    </x-context::dropdown>
+                    </x-context-dropdown>
                 </div>
             </div>
 
@@ -137,9 +137,9 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-context::responsive-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
+            <x-context-responsive-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
                 {{ __('Dashboard') }}
-            </x-context::responsive-nav-link>
+            </x-context-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -159,24 +159,24 @@
 
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
-                <x-context::responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                <x-context-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
-                </x-context::responsive-nav-link>
+                </x-context-responsive-nav-link>
 
                 @if (ERPSAAS\Context\Context::hasApiFeatures())
-                    <x-context::responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
+                    <x-context-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                         {{ __('API Tokens') }}
-                    </x-context::responsive-nav-link>
+                    </x-context-responsive-nav-link>
                 @endif
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}" x-data>
                     @csrf
 
-                    <x-context::responsive-nav-link href="{{ route('logout') }}"
+                    <x-context-responsive-nav-link href="{{ route('logout') }}"
                                    @click.prevent="$root.submit();">
                         {{ __('Log Out') }}
-                    </x-context::responsive-nav-link>
+                    </x-context-responsive-nav-link>
                 </form>
 
                 <!-- Company Management -->
@@ -188,14 +188,14 @@
                     </div>
 
                     <!-- Company Settings -->
-                    <x-context::responsive-nav-link href="{{ route('companies.show', Auth::user()->currentCompany->id) }}" :active="request()->routeIs('companies.show')">
+                    <x-context-responsive-nav-link href="{{ route('companies.show', Auth::user()->currentCompany->id) }}" :active="request()->routeIs('companies.show')">
                         {{ __('Company Settings') }}
-                    </x-context::responsive-nav-link>
+                    </x-context-responsive-nav-link>
 
                     @can('create', ERPSAAS\Context\Context::newCompanyModel())
-                        <x-context::responsive-nav-link href="{{ route('companies.create') }}" :active="request()->routeIs('companies.create')">
+                        <x-context-responsive-nav-link href="{{ route('companies.create') }}" :active="request()->routeIs('companies.create')">
                             {{ __('Create New Company') }}
-                        </x-context::responsive-nav-link>
+                        </x-context-responsive-nav-link>
                     @endcan
 
                     <div class="border-t border-gray-200"></div>
@@ -206,7 +206,7 @@
                     </div>
 
                     @foreach (Auth::user()->allCompanies() as $company)
-                        <x-context::switchable-company :company="$company" component="context-responsive-nav-link" />
+                        <x-context-switchable-company :company="$company" component="context-responsive-nav-link" />
                     @endforeach
                 @endif
             </div>
