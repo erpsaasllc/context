@@ -293,11 +293,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/admin', function () {
-<<<<<<< HEAD
         return view('filament::pages.dashboard');
-=======
-        redirect()->intended(Filament::getUrl());
->>>>>>> 9a0309dfff3bae11cfdc679e79eb4977edbf1122
     })->name('admin');
 });
 
