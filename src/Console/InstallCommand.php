@@ -143,10 +143,6 @@ class InstallCommand extends Command
         $this->replaceInFile('filament', 'filament', config_path('context.php'));
         // $this->replaceInFile("'guard' => 'web'", "'guard' => 'sanctum'", config_path('auth.php'));
 
-        $this->replaceInFile('use Illuminate\Session\Middleware\AuthenticateSession;', 'use ERPSAAS\Context\Http\Middleware\AuthenticateSession;', config_path('filament.php'));
-
-        $this->replaceInFile("'guard' => env('FILAMENT_AUTH_GUARD', 'web'),'", "'guard' => config('context.guard', 'sanctum'),", config_path('filament.php'));
-
         // NPM Packages...
         $this->updateNodePackages(function ($packages) {
             return [
@@ -316,6 +312,10 @@ EOF;
 
         // Configuration...
         $this->replaceInFile('// Features::companies([\'invitations\' => true])', 'Features::companies([\'invitations\' => true])', config_path('context.php'));
+
+        $this->replaceInFile('use Illuminate\Session\Middleware\AuthenticateSession;', 'use ERPSAAS\Context\Http\Middleware\AuthenticateSession;', config_path('filament.php'));
+
+        $this->replaceInFile("'guard' => env('FILAMENT_AUTH_GUARD', 'web'),'", "'guard' => config('context.guard', 'sanctum'),", config_path('filament.php'));
 
         // Directories...
         (new Filesystem)->ensureDirectoryExists(app_path('Actions/Context'));
