@@ -293,7 +293,11 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/admin', function () {
+<<<<<<< HEAD
         return view('filament::pages.dashboard');
+=======
+        redirect()->intended(Filament::getUrl());
+>>>>>>> 9a0309dfff3bae11cfdc679e79eb4977edbf1122
     })->name('admin');
 });
 
@@ -312,6 +316,10 @@ EOF;
 
         // Configuration...
         $this->replaceInFile('// Features::companies([\'invitations\' => true])', 'Features::companies([\'invitations\' => true])', config_path('context.php'));
+
+        $this->replaceInFile('use Illuminate\Session\Middleware\AuthenticateSession;', 'use ERPSAAS\Context\Http\Middleware\AuthenticateSession;', config_path('filament.php'));
+
+        $this->replaceInFile("'guard' => env('FILAMENT_AUTH_GUARD', 'web'),'", "'guard' => config('context.guard', 'sanctum'),", config_path('filament.php'));
 
         // Directories...
         (new Filesystem)->ensureDirectoryExists(app_path('Actions/Context'));
