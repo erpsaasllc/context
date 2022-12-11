@@ -292,9 +292,9 @@ Route::middleware([
     config('context.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/admin', function () {
-        return view('admin');
-    })->name('admin');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });
 
 EOF;
