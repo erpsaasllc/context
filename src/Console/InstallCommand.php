@@ -293,7 +293,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/admin', function () {
-        return view('filament::pages.dashboard');
+        return view('admin');
     })->name('admin');
 });
 
