@@ -310,8 +310,16 @@ EOF;
         // Publish Company Migrations...
         $this->callSilent('vendor:publish', ['--tag' => 'context-company-migrations', '--force' => true]);
 
+        $this->callSilent('vendor:publish', ['--tag' => 'filament-config', '--force' => true]);
+
         // Configuration...
         $this->replaceInFile('// Features::companies([\'invitations\' => true])', 'Features::companies([\'invitations\' => true])', config_path('context.php'));
+
+
+        $this->replaceInFile('use Filament\Http\Middleware\Authenticate', 'use App\Http\Middleware\Authenticate', config_path('filament.php'));
+
+        $this->replaceInFile('\Filament\Http\Livewire\Auth\Login::class', 'null', config_path('filament.php'));
+
 
         // Directories...
         (new Filesystem)->ensureDirectoryExists(app_path('Actions/Context'));
