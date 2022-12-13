@@ -27,7 +27,7 @@
 
             <div>
                 <a
-                    href="{{ route('profile.show') }}"
+                    href="{{ route('filament.pages.user.profile') }}"
                     class="underline text-sm text-gray-600 hover:text-gray-900"
                 >
                     {{ __('Edit Profile') }}</a>
