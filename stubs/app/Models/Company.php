@@ -27,6 +27,7 @@ class Company extends ContextCompany
      * @var string[]
      */
     protected $fillable = [
+        'user_id',
         'name',
         'personal_company',
     ];

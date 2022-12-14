@@ -13,9 +13,9 @@
         </div>
 
         <div class="mt-5">
-            <x-context-danger-button wire:click="$toggle('confirmingCompanyDeletion')" wire:loading.attr="disabled">
+            <x-filament::button wire:click="$toggle('confirmingCompanyDeletion')" wire:loading.attr="disabled">
                 {{ __('Delete Company') }}
-            </x-context-danger-button>
+            </x-filament::button>
         </div>
 
         <!-- Delete Company Confirmation Modal -->
@@ -29,13 +29,13 @@
             </x-slot>
 
             <x-slot name="footer">
-                <x-context-secondary-button wire:click="$toggle('confirmingCompanyDeletion')" wire:loading.attr="disabled">
+                <x-filament::button wire:click="$toggle('confirmingCompanyDeletion')" wire:loading.attr="disabled">
                     {{ __('Cancel') }}
-                </x-context-secondary-button>
+                </x-filament::button>
 
-                <x-context-danger-button class="ml-3" wire:click="deleteCompany" wire:loading.attr="disabled">
+                <x-filament::button class="ml-3" wire:click="deleteCompany" wire:loading.attr="disabled">
                     {{ __('Delete Company') }}
-                </x-context-danger-button>
+                </x-filament::button>
             </x-slot>
         </x-context-confirmation-modal>
     </x-slot>

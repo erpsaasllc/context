@@ -1,13 +1,10 @@
-<x-context-form-section submit="updateCompanyName">
-    <x-slot name="title">
-        {{ __('Company Name') }}
-    </x-slot>
+<x-filament::card :header="__('Company Name')">
 
-    <x-slot name="description">
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
         {{ __('The company\'s name and owner information.') }}
-    </x-slot>
+    </p>
 
-    <x-slot name="form">
+    <x-filament::form wire:submit.prevent="updateCompanyName">
         <!-- Company Owner Information -->
         <div class="col-span-6">
             <x-context-label value="{{ __('Company Owner') }}" />
@@ -34,7 +31,7 @@
 
             <x-context-input-error for="name" class="mt-2" />
         </div>
-    </x-slot>
+    </x-filament::form>
 
     @if (Gate::check('update', $company))
         <x-slot name="actions">
@@ -42,9 +39,9 @@
                 {{ __('Saved.') }}
             </x-context-action-message>
 
-            <x-context-button>
+            <x-filament::button>
                 {{ __('Save') }}
-            </x-context-button>
+            </x-filament::button>
         </x-slot>
     @endif
-</x-context-form-section>
+</x-filament::card>

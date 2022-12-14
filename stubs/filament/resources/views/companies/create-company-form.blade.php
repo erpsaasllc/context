@@ -1,16 +1,11 @@
-<x-context-form-section submit="createCompany">
-    <x-slot name="title">
-        {{ __('Company Details') }}
-    </x-slot>
+<x-filament::card :header="__('Company Details')">
 
-    <x-slot name="description">
-        {{ __('Create a new company to collaborate with others on projects.') }}
-    </x-slot>
-
-    <x-slot name="form">
-        <div class="col-span-6">
-            <x-context-label value="{{ __('Company Owner') }}" />
-
+<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+    {{ __('Create a new company to collaborate with others on projects.') }}
+</p>
+<x-filament::form wire:submit.prevent="createCompany">
+    <div class="col-span-6 sm:col-span-4">
+        <x-context-label value="{{ __('Company Owner') }}" />
             <div class="flex items-center mt-2">
                 <img class="w-12 h-12 rounded-full object-cover" src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}">
 
@@ -29,8 +24,8 @@
     </x-slot>
 
     <x-slot name="actions">
-        <x-context-button>
+        <x-filament::button>
             {{ __('Create') }}
-        </x-context-button>
+        </x-filament::button>
     </x-slot>
-</x-context-form-section>
+</x-filament::form>

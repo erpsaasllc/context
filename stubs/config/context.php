@@ -52,6 +52,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | User Profile Page
+    |--------------------------------------------------------------------------
+    |
+    | Whether or not to automatically display the Profile page in the navigation of Filament. NOTE: if enable_profile_page => false then this value is ignored.
+    |
+    */
+    'enable_profile_page' => true,
+
+    'show_profile_page_in_user_menu' => true,
+
+    "show_profile_page_in_navbar" => false,
+
+    /*
+    |--------------------------------------------------------------------------
     | Features
     |--------------------------------------------------------------------------
     |

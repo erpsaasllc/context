@@ -66,9 +66,9 @@
                         {{ __('Added.') }}
                     </x-context-action-message>
 
-                    <x-context-button>
+                    <x-filament::button>
                         {{ __('Add') }}
-                    </x-context-button>
+                    </x-filament::button>
                 </x-slot>
             </x-context-form-section>
         </div>
@@ -202,13 +202,13 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-context-secondary-button wire:click="stopManagingRole" wire:loading.attr="disabled">
+            <x-filament::button wire:click="stopManagingRole" wire:loading.attr="disabled">
                 {{ __('Cancel') }}
-            </x-context-secondary-button>
+            </x-filament::button>
 
-            <x-context-button class="ml-3" wire:click="updateRole" wire:loading.attr="disabled">
+            <x-filament::button class="ml-3" wire:click="updateRole" wire:loading.attr="disabled">
                 {{ __('Save') }}
-            </x-context-button>
+            </x-filament::button>
         </x-slot>
     </x-context-dialog-modal>
 
@@ -223,13 +223,13 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-context-secondary-button wire:click="$toggle('confirmingLeavingCompany')" wire:loading.attr="disabled">
+            <x-filament::button wire:click="$toggle('confirmingLeavingCompany')" wire:loading.attr="disabled">
                 {{ __('Cancel') }}
-            </x-context-secondary-button>
+            </x-filament::button>
 
-            <x-context-danger-button class="ml-3" wire:click="leaveCompany" wire:loading.attr="disabled">
+            <x-filament::button class="ml-3" wire:click="leaveCompany" wire:loading.attr="disabled">
                 {{ __('Leave') }}
-            </x-context-danger-button>
+            </x-filament::button>
         </x-slot>
     </x-context-confirmation-modal>
 
@@ -244,13 +244,13 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-context-secondary-button wire:click="$toggle('confirmingCompanyEmployeeRemoval')" wire:loading.attr="disabled">
+            <x-filament::button wire:click="$toggle('confirmingCompanyEmployeeRemoval')" wire:loading.attr="disabled">
                 {{ __('Cancel') }}
-            </x-context-secondary-button>
+            </x-filament::button>
 
-            <x-context-danger-button class="ml-3" wire:click="removeCompanyEmployee" wire:loading.attr="disabled">
+            <x-filament::button class="ml-3" wire:click="removeCompanyEmployee" wire:loading.attr="disabled">
                 {{ __('Remove') }}
-            </x-context-danger-button>
+            </x-filament::button>
         </x-slot>
     </x-context-confirmation-modal>
 </div>

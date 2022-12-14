@@ -96,7 +96,7 @@
                                 {{ __('Manage Account') }}
                             </div>
 
-                            <x-context-dropdown-link href="{{ route('filament.pages.profile') }}">                            <x-context-dropdown-link href="{{ route('profile.show') }}">
+                            <x-context-dropdown-link href="{{ route('filament.pages.user.profile') }}">
                                 {{ __('Profile') }}
                             </x-context-dropdown-link>
 
@@ -159,8 +159,12 @@
 
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
-                <x-context-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-            <x-context-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
+                <x-context-responsive-nav-link href="{{ route('filament.pages.user.profile') }}" :active="request()->routeIs('filament.pages.user.profile')">
+                    {{ __('Profile') }}
+                </x-context-responsive-nav-link>
+
+                @if (ERPSAAS\Context\Context::hasApiFeatures())
+                    <x-context-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                         {{ __('API Tokens') }}
                     </x-context-responsive-nav-link>
                 @endif

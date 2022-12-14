@@ -16,9 +16,7 @@
         @stack('scripts')
     </head>
     <body class="antialiased">
-        <x-context-banner />
         {{ $slot }}
-        @livewire('navigation-menu')
         @livewire('notifications')
     </body>
 </html>
