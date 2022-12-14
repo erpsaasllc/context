@@ -328,6 +328,7 @@ EOF;
         // Directories...
         (new Filesystem)->ensureDirectoryExists(app_path('Actions/Context'));
         (new Filesystem)->ensureDirectoryExists(app_path('Events'));
+        (new Filesystem)->ensureDirectoryExists(app_path('Filament/Pages/User'));
         (new Filesystem)->ensureDirectoryExists(app_path('Policies'));
 
 
@@ -351,6 +352,8 @@ EOF;
         copy(__DIR__.'/../../stubs/app/Actions/Context/UpdateCompanyName.php', app_path('Actions/Context/UpdateCompanyName.php'));
 
         copy(__DIR__.'/../../stubs/app/Actions/Fortify/CreateNewUserWithCompanies.php', app_path('Actions/Fortify/CreateNewUser.php'));
+
+        copy(__DIR__.'/../../stubs/app/Filament/Pages/User/Profile.php', app_path('Filament/Pages/User/Profile.php'));
 
         // Policies...
         (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/app/Policies', app_path('Policies'));
