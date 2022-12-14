@@ -261,8 +261,12 @@ class InstallCommand extends Command
         // Directories...
         (new Filesystem)->ensureDirectoryExists(resource_path('views/companies'));
 
+        (new Filesystem)->ensureDirectoryExists(resource_path('views/filament'));
+
         // Other Views...
         (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/filament/resources/views/companies', resource_path('views/companies'));
+
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/filament/resources/views/filament', resource_path('views/filament'));
 
         // Tests...
         $stubs = $this->getTestStubsPath();
@@ -325,6 +329,7 @@ EOF;
         (new Filesystem)->ensureDirectoryExists(app_path('Actions/Context'));
         (new Filesystem)->ensureDirectoryExists(app_path('Events'));
         (new Filesystem)->ensureDirectoryExists(app_path('Policies'));
+
 
         // Service Providers...
         copy(__DIR__.'/../../stubs/app/Providers/AuthServiceProvider.php', app_path('Providers/AuthServiceProvider.php'));

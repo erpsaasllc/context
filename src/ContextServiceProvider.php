@@ -21,6 +21,7 @@ use ERPSAAS\Context\Http\Livewire\TwoFactorAuthenticationForm;
 use ERPSAAS\Context\Http\Livewire\UpdatePasswordForm;
 use ERPSAAS\Context\Http\Livewire\UpdateProfileInformationForm;
 use ERPSAAS\Context\Http\Livewire\UpdateCompanyNameForm;
+use ERPSAAS\Context\Filament\Pages\User;
 use Livewire\Livewire;
 
 class ContextServiceProvider extends ServiceProvider

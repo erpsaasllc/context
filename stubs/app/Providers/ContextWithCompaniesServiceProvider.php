@@ -10,6 +10,9 @@ use App\Actions\Context\InviteCompanyEmployee;
 use App\Actions\Context\RemoveCompanyEmployee;
 use App\Actions\Context\UpdateCompanyName;
 use Illuminate\Support\ServiceProvider;
+use Filament\Facades\Filament;
+use Filament\Navigation\UserMenuItem;
+use ERPSAAS\Context\Filament\Pages\User\Profile;
 use ERPSAAS\Context\Context;
 
 class ContextServiceProvider extends ServiceProvider
@@ -31,6 +34,14 @@ class ContextServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (config('context.enable_profile_page') && config('context.show_profile_page_in_user_menu')) {
+            Filament::serving(function () {
+                Filament::registerUserMenuItems([
+                    'account' => UserMenuItem::make()->url(Profile::getUrl()),
+                ]);
+            });
+        }
+
         $this->app->singleton(
             \Laravel\Fortify\Contracts\LogoutResponse::class,
             \ERPSAAS\Context\Http\Responses\LogoutResponse::class,
