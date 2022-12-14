@@ -12,7 +12,7 @@ use App\Actions\Context\UpdateCompanyName;
 use Illuminate\Support\ServiceProvider;
 use Filament\Facades\Filament;
 use Filament\Navigation\UserMenuItem;
-use ERPSAAS\Context\Filament\Pages\User\Profile;
+use App\Filament\Pages\User\Profile;
 use ERPSAAS\Context\Context;
 
 class ContextServiceProvider extends ServiceProvider
