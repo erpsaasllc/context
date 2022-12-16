@@ -322,6 +322,8 @@ EOF;
 
         $this->replaceInFile('use Filament\Http\Middleware\Authenticate', 'use App\Http\Middleware\Authenticate', config_path('filament.php'));
 
+        $this->replaceInFile('use Illuminate\Session\Middleware\AuthenticateSession', 'use ERPSAAS\Context\Http\Middleware\AuthenticateSession', config_path('filament.php'));
+
         $this->replaceInFile('\Filament\Http\Livewire\Auth\Login::class', 'null', config_path('filament.php'));
 
 
@@ -329,6 +331,7 @@ EOF;
         (new Filesystem)->ensureDirectoryExists(app_path('Actions/Context'));
         (new Filesystem)->ensureDirectoryExists(app_path('Events'));
         (new Filesystem)->ensureDirectoryExists(app_path('Filament/Pages/User'));
+        (new Filesystem)->ensureDirectoryExists(app_path('Filament/Pages/Company'));
         (new Filesystem)->ensureDirectoryExists(app_path('Policies'));
 
 
@@ -354,6 +357,7 @@ EOF;
         copy(__DIR__.'/../../stubs/app/Actions/Fortify/CreateNewUserWithCompanies.php', app_path('Actions/Fortify/CreateNewUser.php'));
 
         copy(__DIR__.'/../../stubs/app/Filament/Pages/User/Profile.php', app_path('Filament/Pages/User/Profile.php'));
+        copy(__DIR__.'/../../stubs/app/Filament/Pages/Company/Settings.php', app_path('Filament/Pages/Company/Settings.php'));
 
         // Policies...
         (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/app/Policies', app_path('Policies'));
