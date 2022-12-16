@@ -319,6 +319,8 @@ EOF;
         // Configuration...
         $this->replaceInFile('// Features::companies([\'invitations\' => true])', 'Features::companies([\'invitations\' => true])', config_path('context.php'));
 
+        $this->replaceInFile('// Features::api(),', 'Features::api(),', config_path('context.php'));
+
 
         $this->replaceInFile('use Filament\Http\Middleware\Authenticate', 'use App\Http\Middleware\Authenticate', config_path('filament.php'));
 
