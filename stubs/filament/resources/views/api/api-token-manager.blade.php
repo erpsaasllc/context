@@ -36,7 +36,7 @@
                     </div>
                 @endif
 
-                <x-context-action-message class="mr-3" on="created">
+                <x-context-action-message>
                     {{ __('Created.') }}
                 </x-context-action-message>
 

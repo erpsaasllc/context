@@ -26,7 +26,7 @@
             <x-context-input-error for="password_confirmation" class="mt-2"/>
         </div>
 
-        <x-context-action-message class="mr-3" on="saved">
+        <x-context-action-message>
             {{ __('Saved.') }}
         </x-context-action-message>
 

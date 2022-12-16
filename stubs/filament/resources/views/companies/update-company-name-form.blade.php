@@ -32,17 +32,15 @@
 
             <x-context-input-error for="name" class="mt-2" />
         </div>
-    </x-filament::form>
 
-    @if (Gate::check('update', $company))
-        <x-slot name="actions">
-            <x-context-action-message class="mr-3" on="saved">
+        @if (Gate::check('update', $company))
+            <x-context-action-message>
                 {{ __('Saved.') }}
             </x-context-action-message>
 
             <x-filament::button>
                 {{ __('Save') }}
             </x-filament::button>
-        </x-slot>
-    @endif
+        @endif
+    </x-filament::form>
 </x-context::grid-section>

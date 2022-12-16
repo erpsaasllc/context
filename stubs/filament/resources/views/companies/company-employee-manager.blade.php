@@ -59,7 +59,7 @@
                         </div>
                     @endif
 
-                    <x-context-action-message class="mr-3" on="saved">
+                    <x-context-action-message>
                         {{ __('Added.') }}
                     </x-context-action-message>
 
