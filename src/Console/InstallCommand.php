@@ -153,6 +153,7 @@ class InstallCommand extends Command
                 'autoprefixer' => '^10.4.7',
                 'postcss' => '^8.4.14',
                 'tailwindcss' => '^3.1.0',
+                '@awcodes/alpine-floating-ui' => '^3.4.0',
             ] + $packages;
         });
 

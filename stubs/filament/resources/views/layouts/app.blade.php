@@ -15,8 +15,10 @@
         @livewireScripts
         @stack('scripts')
     </head>
+
     <body class="antialiased">
         {{ $slot }}
+
         @livewire('notifications')
     </body>
 </html>
