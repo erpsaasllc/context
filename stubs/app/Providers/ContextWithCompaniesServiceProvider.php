@@ -13,6 +13,7 @@ use Illuminate\Support\ServiceProvider;
 use Filament\Facades\Filament;
 use Filament\Navigation\UserMenuItem;
 use App\Filament\Pages\User\Profile;
+use App\Filament\Pages\Company\Settings;
 use ERPSAAS\Context\Context;
 
 class ContextServiceProvider extends ServiceProvider
@@ -38,6 +39,14 @@ class ContextServiceProvider extends ServiceProvider
             Filament::serving(function () {
                 Filament::registerUserMenuItems([
                     'account' => UserMenuItem::make()->url(Profile::getUrl()),
+                ]);
+            });
+        }
+
+        if (config('context.enable_company_settings_page') && config('context.show_company_settings_page_in_user_menu')) {
+            Filament::serving(function () {
+                Filament::registerUserMenuItems([
+                    'settings' => UserMenuItem::make()->label('Settings')->url(Settings::getUrl())->icon('heroicon-s-cog'),
                 ]);
             });
         }

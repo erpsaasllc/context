@@ -1,10 +1,9 @@
 <div>
     @if (Gate::check('addCompanyEmployee', $company))
-        <x-context-section-border />
 
         <!-- Add Company Employee -->
         <div class="mt-10 sm:mt-0">
-            <x-context-form-section submit="addCompanyEmployee">
+            <x-context::grid-section class="mt-8">
                 <x-slot name="title">
                     {{ __('Add Company Employee') }}
                 </x-slot>
@@ -13,9 +12,9 @@
                     {{ __('Add a new company employee to your company, allowing them to collaborate with you.') }}
                 </x-slot>
 
-                <x-slot name="form">
+                <x-filament::form wire:submit.prevent="addCompanyEmployee">
                     <div class="col-span-6">
-                        <div class="max-w-xl text-sm text-gray-600">
+                        <div class="max-w-xl text-sm text-gray-600 dark:text-gray-400">
                             {{ __('Please provide the email address of the person you would like to add to this company.') }}
                         </div>
                     </div>
@@ -40,7 +39,7 @@
                                         <div class="{{ isset($addCompanyEmployeeForm['role']) && $addCompanyEmployeeForm['role'] !== $role->key ? 'opacity-50' : '' }}">
                                             <!-- Role Name -->
                                             <div class="flex items-center">
-                                                <div class="text-sm text-gray-600 {{ $addCompanyEmployeeForm['role'] == $role->key ? 'font-semibold' : '' }}">
+                                                <div class="text-sm text-gray-600 dark:text-gray-400 {{ $addCompanyEmployeeForm['role'] == $role->key ? 'font-semibold' : '' }}">
                                                     {{ $role->name }}
                                                 </div>
 
@@ -50,7 +49,7 @@
                                             </div>
 
                                             <!-- Role Description -->
-                                            <div class="mt-2 text-xs text-gray-600 text-left">
+                                            <div class="mt-2 text-xs text-gray-600 dark:text-gray-400 text-left">
                                                 {{ $role->description }}
                                             </div>
                                         </div>
@@ -59,18 +58,16 @@
                             </div>
                         </div>
                     @endif
-                </x-slot>
 
-                <x-slot name="actions">
                     <x-context-action-message class="mr-3" on="saved">
                         {{ __('Added.') }}
                     </x-context-action-message>
 
-                    <x-filament::button>
+                    <x-filament::button type="submit">
                         {{ __('Add') }}
                     </x-filament::button>
-                </x-slot>
-            </x-context-form-section>
+                </x-filament::form>
+            </x-context::grid-section>
         </div>
     @endif
 
@@ -79,7 +76,7 @@
 
         <!-- Company Employee Invitations -->
         <div class="mt-10 sm:mt-0">
-            <x-context-action-section>
+            <x-context::action-section class="mt-8">
                 <x-slot name="title">
                     {{ __('Pending Company Invitations') }}
                 </x-slot>
@@ -92,22 +89,22 @@
                     <div class="space-y-6">
                         @foreach ($company->companyInvitations as $invitation)
                             <div class="flex items-center justify-between">
-                                <div class="text-gray-600">{{ $invitation->email }}</div>
+                                <div class="text-gray-600 dark:text-gray-400">{{ $invitation->email }}</div>
 
                                 <div class="flex items-center">
                                     @if (Gate::check('removeCompanyEmployee', $company))
                                         <!-- Cancel Company Invitation -->
-                                        <button class="cursor-pointer ml-6 text-sm text-red-500 focus:outline-none"
+                                        <x-filament::button color="gray" class="cursor-pointer ml-6 text-sm focus:outline-none"
                                                             wire:click="cancelCompanyInvitation({{ $invitation->id }})">
                                             {{ __('Cancel') }}
-                                        </button>
+                                        </x-filament::button>
                                     @endif
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 </x-slot>
-            </x-context-action-section>
+            </x-context::grid-section>
         </div>
     @endif
 
@@ -116,7 +113,7 @@
 
         <!-- Manage Company Employees -->
         <div class="mt-10 sm:mt-0">
-            <x-context-action-section>
+            <x-context::action-section class="mt-8">
                 <x-slot name="title">
                     {{ __('Company Employees') }}
                 </x-slot>
@@ -138,33 +135,33 @@
                                 <div class="flex items-center">
                                     <!-- Manage Company Employee Role -->
                                     @if (Gate::check('addCompanyEmployee', $company) && ERPSAAS\Context\Context::hasRoles())
-                                        <button class="ml-2 text-sm text-gray-400 underline" wire:click="manageRole('{{ $user->id }}')">
+                                        <button class="ml-2 text-sm text-gray-400 dark:text-gray-200 underline" wire:click="manageRole('{{ $user->id }}')">
                                             {{ ERPSAAS\Context\Context::findRole($user->employeeship->role)->name }}
                                         </button>
                                     @elseif (ERPSAAS\Context\Context::hasRoles())
-                                        <div class="ml-2 text-sm text-gray-400">
+                                        <div class="ml-2 text-sm text-gray-400 dark:text-gray-200">
                                             {{ ERPSAAS\Context\Context::findRole($user->employeeship->role)->name }}
                                         </div>
                                     @endif
 
                                     <!-- Leave Company -->
                                     @if ($this->user->id === $user->id)
-                                        <button class="cursor-pointer ml-6 text-sm text-red-500" wire:click="$toggle('confirmingLeavingCompany')">
+                                        <x-filament::button color="danger" class="cursor-pointer ml-6 text-sm" wire:click="$toggle('confirmingLeavingCompany')">
                                             {{ __('Leave') }}
-                                        </button>
+                                        </x-filament::button>
 
                                     <!-- Remove Company Employee -->
                                     @elseif (Gate::check('removeCompanyEmployee', $company))
-                                        <button class="cursor-pointer ml-6 text-sm text-red-500" wire:click="confirmCompanyEmployeeRemoval('{{ $user->id }}')">
+                                        <x-filament::button color="danger" class="cursor-pointer ml-6 text-sm" wire:click="confirmCompanyEmployeeRemoval('{{ $user->id }}')">
                                             {{ __('Remove') }}
-                                        </button>
+                                        </x-filament::button>
                                     @endif
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 </x-slot>
-            </x-context-action-section>
+            </x-context::action-section>
         </div>
     @endif
 
@@ -182,7 +179,7 @@
                         <div class="{{ $currentRole !== $role->key ? 'opacity-50' : '' }}">
                             <!-- Role Name -->
                             <div class="flex items-center">
-                                <div class="text-sm text-gray-600 {{ $currentRole == $role->key ? 'font-semibold' : '' }}">
+                                <div class="text-sm text-gray-600 dark:text-gray-400 {{ $currentRole == $role->key ? 'font-semibold' : '' }}">
                                     {{ $role->name }}
                                 </div>
 
@@ -192,7 +189,7 @@
                             </div>
 
                             <!-- Role Description -->
-                            <div class="mt-2 text-xs text-gray-600">
+                            <div class="mt-2 text-xs text-gray-600 dark:text-gray-400">
                                 {{ $role->description }}
                             </div>
                         </div>
@@ -202,7 +199,7 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-filament::button wire:click="stopManagingRole" wire:loading.attr="disabled">
+            <x-filament::button color="gray" class="mr-3" wire:click="stopManagingRole" wire:loading.attr="disabled">
                 {{ __('Cancel') }}
             </x-filament::button>
 

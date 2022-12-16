@@ -1,8 +1,12 @@
-<x-filament::card :header="__('Profile Information')">
+<x-context::grid-section class="mt-8">
+    <x-slot name="title">
+        {{ __('Profile Information') }}
+    </x-slot>
 
-    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+    <x-slot name="description">
         {{ __('Update your account\'s profile information and email address.') }}
-    </p>
+    </x-slot>
+
     <x-filament::form wire:submit.prevent="updateProfileInformation">
         <!-- Profile Photo -->
         @if (ERPSAAS\Context\Context::managesProfilePhotos())
@@ -65,7 +69,7 @@
                 <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
                     {{ __('Before your email can be updated, you must verify your current email address.') }}
 
-                    <x-filament::button type="button" class="underline text-sm text-gray-600 hover:text-gray-900" wire:click.prevent="sendEmailVerification">
+                    <x-filament::button type="button" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900" wire:click.prevent="sendEmailVerification">
                         {{ __('Resend Verification Email') }}
                     </x-filament::button>
                 </p>
@@ -87,4 +91,4 @@
             {{ __('Save') }}
         </x-filament::button>
     </x-filament::form>
-</x-filament::card>
+</x-context::grid-section>

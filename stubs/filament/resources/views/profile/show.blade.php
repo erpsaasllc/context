@@ -24,6 +24,12 @@
         @endif
 
         <div class="mt-10 sm:mt-0">
+            @livewire('api.api-token-manager')
+        </div>
+
+        <x-context-section-border />
+
+        <div class="mt-10 sm:mt-0">
             @livewire('profile.logout-other-browser-sessions-form')
         </div>
 

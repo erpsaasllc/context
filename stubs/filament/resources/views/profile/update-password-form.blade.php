@@ -1,8 +1,11 @@
-<x-filament::card :header="__('Update Password')">
+<x-context::grid-section class="mt-8">
+    <x-slot name="title">
+        {{ __('Update Password') }}
+    </x-slot>
 
-    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+    <x-slot name="description">
         {{ __('Ensure your account is using a long, random password to stay secure.') }}
-    </p>
+    </x-slot>
 
     <x-filament::form wire:submit.prevent="updatePassword">
         <div class="col-span-6 sm:col-span-4">
@@ -31,4 +34,4 @@
             {{ __('Save') }}
         </x-filament::button>
     </x-filament::form>
-</x-filament::card>
+</x-context::grid-section>
