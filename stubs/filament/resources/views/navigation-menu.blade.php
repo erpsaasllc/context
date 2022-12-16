@@ -43,12 +43,12 @@
                                     </div>
 
                                     <!-- Company Settings -->
-                                    <x-context-dropdown-link href="{{ route('companies.show', Auth::user()->currentCompany->id) }}">
+                                    <x-context-dropdown-link href="{{ route('filament.pages.company.settings', Auth::user()->currentCompany->id) }}">
                                         {{ __('Company Settings') }}
                                     </x-context-dropdown-link>
 
                                     @can('create', ERPSAAS\Context\Context::newCompanyModel())
-                                        <x-context-dropdown-link href="{{ route('companies.create') }}">
+                                        <x-context-dropdown-link href="{{ route('filament.pages.company.settings') }}">
                                             {{ __('Create New Company') }}
                                         </x-context-dropdown-link>
                                     @endcan
@@ -188,12 +188,12 @@
                     </div>
 
                     <!-- Company Settings -->
-                    <x-context-responsive-nav-link href="{{ route('companies.show', Auth::user()->currentCompany->id) }}" :active="request()->routeIs('companies.show')">
+                    <x-context-responsive-nav-link href="{{ route('filament.pages.company.settings', Auth::user()->currentCompany->id) }}" :active="request()->routeIs('filament.pages.company.settings')">
                         {{ __('Company Settings') }}
                     </x-context-responsive-nav-link>
 
                     @can('create', ERPSAAS\Context\Context::newCompanyModel())
-                        <x-context-responsive-nav-link href="{{ route('companies.create') }}" :active="request()->routeIs('companies.create')">
+                        <x-context-responsive-nav-link href="{{ route('filament.pages.company.settings') }}" :active="request()->routeIs('filament.pages.company.settings')">
                             {{ __('Create New Company') }}
                         </x-context-responsive-nav-link>
                     @endcan

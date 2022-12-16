@@ -1,6 +1,6 @@
 @props(['company', 'component' => 'context-dropdown-link'])
 
-<form method="POST" action="{{ route('current-company.update') }}" x-data>
+<form method="POST" action="{{ route('filament.pages.company.settings') }}" x-data>
     @method('PUT')
     @csrf
 
